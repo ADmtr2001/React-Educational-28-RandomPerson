@@ -50,8 +50,18 @@ function App() {
     getPerson();
   }, []);
 
+  let activeButton = null;
+
   const handleValue = (e) => {
-    console.log(e.target);
+    const target = e.target.closest('.icon');
+
+    if (!target || activeButton === target) return;
+
+    activeButton = target;
+    const newValue = target.dataset.label;
+    setTitle(newValue);
+    setValue(person[newValue]);
+    console.log('hello');
   };
 
   return (
@@ -66,7 +76,7 @@ function App() {
           />
           <p className='user-title'>my {title} is</p>
           <p className='user-value'>{value}</p>
-          <div className='values-list'>
+          <div className='values-list' onMouseOver={handleValue}>
             <button
               className='icon'
               data-label='name'
