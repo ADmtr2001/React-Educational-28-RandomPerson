@@ -1,1 +1,0 @@
-# React-Educational-28-RandomPerson
